@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Countdown</title>
+    <style>
+        body {
+            background-image: url('background.png');
+            background-size: cover;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+        }
+        .countdown {
+            font-size: 2em;
+            margin: 20px;
+            color: black;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 20px;
+        }
+        .poem {
+            color: red;
+            font-size: 1.2em;
+            margin: 20px;
+            line-height: 1.5;
+            max-width: 400px;
+            text-align: center;
+        }
+        .note {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid #d32f2f;
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            font-size: 1.1em;
+            color: #d32f2f;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-left: 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 1.2em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown to Christmas!</h1>
+    <div class="countdown" id="countdown">Loading...</div>
+    <div class="content">
+        <div class="poem">
+            The Spirit of Christmas<br>
+            Beneath the glow of twinkling lights,<br>
+            A warmth unfolds on winter nights.<br>
+            A season’s gift, a gentle call,<br>
+            To love, to give, to share with all.<br><br>
+
+            The spirit whispers, soft and clear,<br>
+            In every heart, it draws us near.<br>
+            To gather 'round with those we love,<br>
+            And thank the stars that shine above.<br><br>
+
+            It’s not the gold, the gifts, the gleam,<br>
+            But kindness woven in the dream.<br>
+            A hand to hold, a friend to cheer,<br>
+            The spirit grows with every year.<br><br>
+
+            In snowy fields and bustling streets,<br>
+            The sound of joy in laughter meets.<br>
+            The carols sung, the stories told,<br>
+            A magic warmer than the cold.<br><br>
+
+            For Christmas lives in every smile,<br>
+            In every act that’s free of guile.<br>
+            It’s found in hearts, both near and far,<br>
+            A guiding light, our northern star.<br><br>
+
+            So as the world is wrapped in cheer,<br>
+            Remember why we hold it dear.<br>
+            The spirit of Christmas, simple, true,<br>
+            Is love for all—me and you.
+        </div>
+        <div class="note">
+            I'm not gonna force the background music on you, but you can find it below the poem <3
+        </div>
+    </div>
+    <audio id="background-music" autoplay loop controls>
+        <source src="jingle_bells.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="footer">Get ready for the holiday season!</div>
+
+    <script>
+        const countdownElement = document.getElementById('countdown');
+        const christmasDate = new Date('December 25, 2024 00:00:00').getTime();
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = christmasDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            countdownElement.innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds until Christmas!`;
+            if (distance < 0) {
+                countdownElement.innerHTML = "🎄 Merry Christmas! 🎄<br>Wishing you joy and happiness!";
+            }
+        };
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
